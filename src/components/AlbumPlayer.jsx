@@ -23,9 +23,10 @@ function AlbumPlayer() {
    useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize([window.innerWidth]);
-      if(windowSize >= 980){
-        setWidth(980)
-      }else{
+      if(windowSize >= 1200){
+        setWidth(windowSize * 0.6 )
+      }
+      else{
        setWidth(windowSize - 30) 
       }
       
@@ -43,7 +44,9 @@ function AlbumPlayer() {
     useEffect(()=>{
          if(selectedPlaylist.length >0){
             setLoading(false)
+            
          }
+         console.log('selected playlist', selectedPlaylist)
     },[])
     
         //console.log('playlisttt player', selectedPlaylist)
@@ -52,10 +55,7 @@ function AlbumPlayer() {
         //let SongUrl = `https://www.youtube.com/watch?v=${VideoId}&list=${albumInfo.id}&index=${selectedPosition}`
         //console.log('song urll ', SongUrl)
     
-    const ChangeSong = (index) => {
-        
-        console.log('orderrr',  index)
-    }
+    
     
 
   return (
@@ -63,7 +63,7 @@ function AlbumPlayer() {
     { loading == false ?
         <Countainer>
             <Player>
-                <ReactPlayer url='https://www.youtube.com/watch?v=6Jpj-DTee-s&list=PL2zzg6zGyIivUooc-48pBwj_A-uLpEALb&index=2' controls={true} width={w} height={h} playing={true} />
+                <ReactPlayer url={`https://www.youtube.com/watch?v=${selectedPlaylist[selectedPosition].contentDetails.videoId}`} controls={true} width={w} height={h} playing={true} />
                 <SongDesc>
                     <Title>{selectedPlaylist[selectedPosition].snippet.title}</Title>   
                     <Position>{selectedPosition + 1}/{selectedPlaylist.length}</Position>
@@ -75,9 +75,10 @@ function AlbumPlayer() {
                     selectedPlaylist.map((item,index)=> (
                         <>
                         
-                        <SongCard key={item.snippet.position} onClick={index => console.log('index',index)}>
+                        <SongCard key={item.snippet.position} onClick={() => setSelectedPosition(index)}>
                             <img src={item.snippet.thumbnails.maxres.url} width="100px" height="60px"/>
                             <SongTitle>{item.snippet.title}</SongTitle>
+                            
                             <PlayBut  >
                                 <FaPlay/>
                             </PlayBut>

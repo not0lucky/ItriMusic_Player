@@ -23,7 +23,7 @@ function AlbumPage() {
  
   useEffect(()=>{
     getSongs()
-  },[])
+  },[id])
 
   const getSongs = async () => {
     try{
