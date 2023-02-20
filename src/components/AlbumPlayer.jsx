@@ -24,10 +24,10 @@ function AlbumPlayer() {
     const handleWindowResize = () => {
       setWindowSize([window.innerWidth]);
       if(windowSize >= 1200){
-        setWidth(windowSize * 0.6 )
+        setWidth(windowSize * 0.6)
       }
       else{
-       setWidth(windowSize - 30) 
+       setWidth(windowSize - 50) 
       }
       
       console.log('window sizee',windowSize)
@@ -46,21 +46,15 @@ function AlbumPlayer() {
             setLoading(false)
             
          }
-         console.log('selected playlist', selectedPlaylist)
+        
     },[])
     
-        //console.log('playlisttt player', selectedPlaylist)
-         //console.log('video id 0', selectedPlaylist[selectedPosition].contentDetails.videoId)
-        //let VideoId = selectedPlaylist[selectedPosition].contentDetails.videoId
-        //let SongUrl = `https://www.youtube.com/watch?v=${VideoId}&list=${albumInfo.id}&index=${selectedPosition}`
-        //console.log('song urll ', SongUrl)
-    
-    
+        
     
 
   return (
     <>
-    { loading == false ?
+    { loading == false && selectedPlaylist ?
         <Countainer>
             <Player>
                 <ReactPlayer url={`https://www.youtube.com/watch?v=${selectedPlaylist[selectedPosition].contentDetails.videoId}`} controls={true} width={w} height={h} playing={true} />

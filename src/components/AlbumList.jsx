@@ -87,9 +87,8 @@ const Title = styled.h1`
     margin-top: 1px;
     width: 100px;
     height: 4px;
-    background-color: #00bbf9;
+    background-color: #ff8a04;
 
-    
 }
 `
 
