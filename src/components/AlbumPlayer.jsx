@@ -44,7 +44,7 @@ function AlbumPlayer() {
     useEffect(()=>{
          if(selectedPlaylist.length >0){
             setLoading(false)
-            
+
          }
         
     },[selectedPlaylist])
@@ -54,7 +54,7 @@ function AlbumPlayer() {
 
   return (
     <>
-    { selectedPlaylist && selectedPlaylist ?
+    { selectedPlaylist.length>0 && selectedPlaylist ?
         <Countainer>
             <Player>
                 <ReactPlayer url={`https://www.youtube.com/watch?v=${selectedPlaylist[selectedPosition].contentDetails.videoId}`} controls={true} width={w} height={h} playing={true} />
