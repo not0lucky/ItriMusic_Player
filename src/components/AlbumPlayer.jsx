@@ -47,14 +47,14 @@ function AlbumPlayer() {
             
          }
         
-    },[])
+    },[selectedPlaylist])
     
         
     
 
   return (
     <>
-    { loading == false && selectedPlaylist ?
+    { selectedPlaylist && selectedPlaylist ?
         <Countainer>
             <Player>
                 <ReactPlayer url={`https://www.youtube.com/watch?v=${selectedPlaylist[selectedPosition].contentDetails.videoId}`} controls={true} width={w} height={h} playing={true} />
